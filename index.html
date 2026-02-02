@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modo Gamer Activado</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        color: #00ffcc;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .container {
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        text-shadow: 0 0 15px #00ffcc;
+    }
+
+    p {
+        color: #ccc;
+        margin-bottom: 25px;
+    }
+
+    button {
+        background: #00ffcc;
+        color: #000;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1em;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 0 20px #00ffcc;
+    }
+
+    button:hover {
+        background: #00ffaa;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>🎮 MODO GAMER ACTIVADO</h1>
+    <p>Tu setup está listo.<br>Pulsa para entrar al juego.</p>
+    <button onclick="openGame()">ABRIR JUEGO</button>
+</div>
+
+<audio id="bootSound" autoplay>
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openGame() {
+    // EJEMPLO: Call of Duty Mobile (Play Store)
+    window.location.href = "https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter";
+}
+</script>
+
+</body>
+</html>
