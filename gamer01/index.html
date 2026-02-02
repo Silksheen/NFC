@@ -3,74 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modo Gamer Activado 2</title>
+<title>NFC Gamer</title>
 
 <style>
     body {
         margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #fff;
         background: #000;
-        color: #00ffcc;
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        text-align: center;
+    }
+
+    .bg {
+        position: fixed;
+        inset: 0;
+        background: url("img/bg.jpg") center / cover no-repeat;
+        filter: brightness(0.35);
+        z-index: -1;
     }
 
     .container {
-        animation: fadeIn 1.5s ease-out;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .card {
+        background: rgba(0,0,0,0.65);
+        border: 1px solid #222;
+        border-radius: 16px;
+        padding: 30px;
+        max-width: 420px;
+        width: 100%;
+        box-shadow: 0 0 40px rgba(0,255,204,0.25);
     }
 
     h1 {
-        font-size: 2em;
-        margin-bottom: 10px;
-        text-shadow: 0 0 15px #00ffcc;
+        margin-top: 0;
+        color: #00ffcc;
+        text-align: center;
+        text-shadow: 0 0 12px #00ffcc;
     }
 
-    p {
-        color: #ccc;
-        margin-bottom: 25px;
+    .info {
+        margin: 20px 0;
+        font-size: 0.95em;
     }
 
-    button {
-        background: #00ffcc;
-        color: #000;
-        border: none;
-        padding: 15px 30px;
-        font-size: 1em;
-        border-radius: 6px;
-        cursor: pointer;
-        box-shadow: 0 0 20px #00ffcc;
+    .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #222;
     }
 
-    button:hover {
-        background: #00ffaa;
+    .row span:first-child {
+        color: #aaa;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
+    .counter {
+        margin-top: 20px;
+        text-align: center;
+        color: #00ffcc;
+        font-size: 0.9em;
+    }
+
+    .footer {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 0.75em;
+        color: #666;
     }
 </style>
 </head>
 
 <body>
+
+<div class="bg"></div>
+
 <div class="container">
-    <h1>🎮 MODO GAMER ACTIVADO 2</h1>
-    <p>Tu setup está listo.<br>Pulsa para entrar al juego.</p>
-    <button onclick="openGame()">ABRIR JUEGO</button>
+    <div class="card">
+        <h1>🎮 NFC GAMER</h1>
+
+        <!-- INFO EDITABLE -->
+        <div class="info">
+            <div class="row">
+                <span>Nombre:</span>
+                <span>Sheen</span>
+            </div>
+            <div class="row">
+                <span>Juego:</span>
+                <span>Call of Duty Mobile</span>
+            </div>
+            <div class="row">
+                <span>Fecha:</span>
+                <span>01 / 02 / 2026</span>
+            </div>
+            <div class="row">
+                <span>Entrega:</span>
+                <span>Logo LED Personalizado</span>
+            </div>
+        </div>
+
+        <!-- CONTADOR -->
+        <div id="counter" class="counter">
+            Escaneos: cargando...
+        </div>
+
+        <div class="footer">
+            Escanea. Juega. Repite.
+        </div>
+    </div>
 </div>
 
-<audio id="bootSound" autoplay>
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-function openGame() {
-    // EJEMPLO: Call of Duty Mobile (Play Store)
-    window.location.href = "https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter";
-}
+fetch("https://api.countapi.xyz/hit/teclaroja_test/visitas")
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("counter").innerText =
+      "Escaneos: " + data.value;
+  });
 </script>
 
 </body>
