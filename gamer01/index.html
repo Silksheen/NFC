@@ -118,8 +118,8 @@
 </div>
 
 <script>
-fetch("https://countapi.mileshilliard.com/api/v1/hit/teclaroja_test/")
-  .then(response => response.json())
+fetch("https://countapi.mileshilliard.com/api/v1/hit/teclaroja_test")
+  .then(res => res.json())
   .then(data => {
     document.getElementById("counter").innerText =
       "Escaneos: " + data.value;
